@@ -9,7 +9,7 @@ model_id = "CompVis/stable-diffusion-v1-4"
 pipe = StableDiffusionPipeline.from_pretrained(model_id)
 pipe = pipe.to("cuda")  # Use GPU if available, otherwise use CPU
 
-def generate_image(prompt, guidance_scale=7.5, num_inference_steps=50):
+def generate_image(prompt, guidance_scale=7.5, num_inference_steps=10):
     try:
         with torch.no_grad():
             image = pipe(prompt, guidance_scale=guidance_scale, num_inference_steps=num_inference_steps).images[0]
